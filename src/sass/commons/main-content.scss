@@ -1,0 +1,53 @@
+.challenges__list {
+    @include row-flex();
+    margin-top: 100px;
+}
+
+.challenges__items {
+    @include col();
+    @include col-6();
+    height: 500px;
+    background-color: $black;
+    margin: 15px;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 50px;
+    .tooltip {
+        color: $white;
+        text-align: center;
+        padding-top: 5px;
+        position: absolute;
+        z-index: 0;
+        top: -30px;
+        height: 80px;
+        width: 60px;
+        background-color: darken(#7381c4, 12%);
+        left: 50%;
+        margin-left: -20px;
+        border-radius: 50px;
+        box-shadow: $shadow-white;
+        transition: transform 0.4s ease;
+        &:hover {
+            transform: translateY(-10px);
+        }
+    }
+
+}
+
+.challenge__wrap {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+    background-color: $item-bg;
+}
+
+.challenge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 40px;
+    background-color: $white;
+}

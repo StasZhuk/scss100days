@@ -1,0 +1,93 @@
+header {
+    background: linear-gradient(to top right, #43389F 0, #4ec6ca 100%);
+}
+
+.logo {
+    width: 700px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    height: 270px;
+    color: $white;
+    &::after,
+    &::before {
+        content: '';
+        flex-grow: 1;
+        width: 200px;
+        position: absolute;
+        height: 10px;
+        border-top: 3px solid $white;
+        border-bottom: 3px solid $white;
+        top: 50%;
+        margin-top: -8px;
+        box-shadow: $shadow-black;
+    }
+    .center {
+        margin: auto;
+    }
+
+    &::after {
+        right: 0;
+    }
+
+    .logo__numbers {
+        position: relative;
+        height: 100px;
+        width: 211px;
+    }
+    .one-one,
+    .one-two,
+    .zero-one,
+    .zero-two {
+        position: absolute;
+        border-radius: 3px;
+        background-color: $white;
+        box-shadow: $shadow-black;
+    }
+    .one-one {
+        z-index: 1;
+        left: -16px;
+        height: 40px;
+        width: 20px;
+        transform: rotate(50deg);
+    }
+    .one-two {
+        z-index: 3;
+        height: 100%;
+        width: 24px;
+        top: 0;
+    }
+    .zero-one,
+    .zero-two {
+        color: $white;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 24px solid currentColor;
+        background-color: transparent;
+    }
+    .zero-one {
+        z-index: 2;
+        left: 20px;
+    }
+    .zero-two {
+        z-index: 1;
+        left: 110px;
+    }
+    .logo__text-big {
+        font-size: 81px;
+        line-height: 76px;
+        font-weight: 700;
+        margin-left: -6px;
+    }
+    .logo__text-small {
+        font-size: 26px;
+        font-weight: 300;
+        text-align: center;
+        line-height: 30px;
+        margin-left: -4px;
+        text-transform: uppercase;
+    }
+}
+
