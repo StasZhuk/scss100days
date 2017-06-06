@@ -78,7 +78,7 @@ gulp.task('bs', function () {
 gulp.task('watch', ['bs', 'sass'], function () {
     gulp.watch('src/sass/**/*.scss', ['sass']);
     gulp.watch('src/**/*.html', bs.reload);
-    gulp.watch('src/js/**/*.html', bs.reload);
+    gulp.watch('src/js/**/*.js', bs.reload);
 });
 
 gulp.task('default', ['sass', 'watch']);

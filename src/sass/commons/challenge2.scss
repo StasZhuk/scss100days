@@ -1,0 +1,131 @@
+    .challenge__2 {
+        background: $ch-bg-1;
+        .burger__wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -50px;
+            margin-top: -30px;
+            width: 100px;
+            height: 60px;
+            cursor: pointer;
+            &::before,
+            &::after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 8px;
+                background-color: $white;
+                box-shadow: $shadow-black;
+                border-radius: 3px/3px;
+                transform-origin: center;
+            }
+            &::after {
+                bottom: 0;
+                animation: burgerBackBottomLine 2s ease-in-out forwards;
+            }
+            &::before {
+                top: 0;
+                animation: burgerBackTopLine 2s ease-in-out forwards;
+            }
+        }
+        .burger {
+            position: absolute;
+            top: 50%;
+            margin-top: -4px;
+            width: 100%;
+            height: 8px;
+            background-color: $white;
+            box-shadow: $shadow-black;
+            border-radius: 3px/3px;
+            animation: burgerBack 2s ease-in-out forwards;
+        }
+        .burger__wrap.no-animation {
+            &:before,
+            &:after {
+                animation: none !important;
+            }
+            .burger {
+                animation: none !important;
+            }
+        }
+        .burger__wrap.active .burger {
+            animation: burger 2s ease-in-out forwards;
+        }
+        .burger__wrap.active::before {
+            animation: burgerTopLine 2s ease-in-out forwards;
+        }
+        .burger__wrap.active::after {
+            animation: burgerBottomLine 2s ease-in-out forwards;
+        }
+    }
+
+    @keyframes burger {
+        0% {
+            transform: translate3d(0, 0, 0) scale(1.0);
+            opacity: 1;
+        }
+        100% {
+            transform: translate3d(0, 0, 0) scale(0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes burgerBack {
+        0% {
+            transform: translate3d(0, 0, 0) scale(0);
+            opacity: 0;
+        }
+        100% {
+            transform: translate3d(0, 0, 0) scale(1.0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes burgerTopLine {
+        0% {
+            transform: translate3d(0, 0, 0) rotate(0);
+        }
+        50% {
+            transform: translate3d(0, 26px, 0) rotate(0);
+        }
+        100% {
+            transform: translate3d(0, 26px, 0) rotate(135deg);
+        }
+    }
+
+    @keyframes burgerBackTopLine {
+        0% {
+            transform: translate3d(0, 26px, 0) rotate(135deg);
+        }
+        50% {
+            transform: translate3d(0, 26px, 0) rotate(0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0) rotate(0);
+        }
+    }
+
+    @keyframes burgerBottomLine {
+        0% {
+            transform: translate3d(0, 0, 0) rotate(0);
+        }
+        50% {
+            transform: translate3d(0, -26px, 0) rotate(0);
+        }
+        100% {
+            transform: translate3d(0, -26px, 0) rotate(-135deg);
+        }
+    }
+
+    @keyframes burgerBackBottomLine {
+        0% {
+            transform: translate3d(0, -26px, 0) rotate(-135deg);
+        }
+        50% {
+            transform: translate3d(0, -26px, 0) rotate(0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0) rotate(0);
+        }
+    }
