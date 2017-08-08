@@ -1,0 +1,19 @@
+//- nav menu mixin
+mixin nav (className, items, activeItem)
+    #{className}(class=`${className} ${className}__main` id=`main-${className}`)
+            ul(class=`${className}__list list`)
+                each href, title in items
+                    if (title == activeItem) 
+                        li.nav__list-item.list__item
+                            span(href= href).nav__list-link.active
+                                span= title
+                    else
+                        li.nav__list-item.list__item
+                            a(href= href).nav__list-link
+                                span(class=`${className}__list-noactive`)= title
+
+//- icon SVG mixin
+mixin icon(name, mod)
+    - mod = mod || ''
+    svg(class="icon icon-" + name + ' ' + mod)
+        use(xlink:href="/assets/img/sprite/sprite.svg#" + name)

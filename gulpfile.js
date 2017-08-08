@@ -1,84 +1,44 @@
-var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    bs = require('browser-sync'),
-    gcmq = require('gulp-group-css-media-queries'),
-    smartgrid = require('smart-grid'),
-    notify = require("gulp-notify");
- 
-/* It's principal settings in smart grid project */
-var settings = {
-    outputStyle: 'scss', /* less || scss || sass || styl */
-    columns: 12, /* number of grid columns */
-    offset: "30px", /* gutter width px || % */
-    container: {
-        maxWidth: '1300px', /* max-width оn very large screen */
-        fields: '30px' /* side fields */
-    },
-    breakPoints: {
-        lg: {
-            'width': '1170px', /* -> @media (max-width: 1100px) */
-            'fields': '30px' /* side fields */
-        },
-        md: {
-            'width': '960px',
-            'fields': '15px'
-        },
-        sm: {
-            'width': '780px',
-            'fields': '15px'
-        },
-        xs: {
-            'width': '480px',
-            'fields': '15px'
-        }
-        /* 
-        We can create any quantity of break points.
- 
-        some_name: {
-            some_width: 'Npx',
-            some_offset: 'N(px|%)'
-        }
-        */
-    }
+'use strict';
+
+global.$ = {
+  package: require('./package.json'),
+  config: require('./gulp/config'),
+  path: {
+    source: './source',
+    task: require('./gulp/paths/tasks.js'),
+    cssFoundation: require('./gulp/paths/css.foundation.js'),
+  },
+  gulp: require('gulp'),
+  del: require('del'),
+  buffer: require('vinyl-buffer'),
+  merge: require('merge-stream'),
+  browserSync: require('browser-sync').create(),
+  smartgrid: require('smart-grid'),
+  gcmq: require('gulp-group-css-media-queries'),
+  fs: require('fs'),
+  gp: require('gulp-load-plugins')()
 };
 
-//TASKS
-
-// SMARTGRID
-gulp.task('smartgrid', function () {
-    return smartgrid('./src/sass/layout', settings);
-
+$.path.task.forEach(function(taskPath) {
+  require(taskPath)();
 });
 
-//SCSS
-gulp.task('sass', function () {
-    return gulp.src("src/sass/main.scss")
-    .pipe(sass())
-    .on('error', notify.onError(function(err) {
-        return {
-            title: "Styles",
-            message: err.message
-        };
-    }))
-    .pipe(gcmq())
-    .pipe(gulp.dest("src/css/"))
-    .pipe(bs.reload({
-        stream: true
-    }))
-});
-
-gulp.task('bs', function () {
-    return bs({
-        server: {
-            baseDir: './src'
-        }
-    });
-});
-
-gulp.task('watch', ['bs', 'sass'], function () {
-    gulp.watch('src/sass/**/*.scss', ['sass']);
-    gulp.watch('src/**/*.html', bs.reload);
-    gulp.watch('src/js/**/*.js', bs.reload);
-});
-
-gulp.task('default', ['sass', 'watch']);
+$.gulp.task('default', $.gulp.series(
+  'clean',
+  $.gulp.parallel(
+    'sass',
+    'pug',
+    'webpack',
+    'copy:image',
+    'copy:font',
+    'copy:js',
+    'css:foundation',
+    'sprite:svg',
+    'sprite:png'
+   
+  ),
+  $.gulp.parallel(
+    'watch',
+    'serve'
+  )
+));

@@ -1,0 +1,34 @@
+{
+  "name": "100daysscss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StasZhuk/scss100days.git"
+  },
+  "keywords": [
+    "scss",
+    "100days",
+    "challenge"
+  ],
+  "author": "staszhuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StasZhuk/scss100days/issues"
+  },
+  "homepage": "https://github.com/StasZhuk/scss100days#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-group-css-media-queries": "^1.2.0",
+    "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp-notify": "^3.0.0",
+    "smart-grid": "^1.0.5"
+  }
+}

@@ -1,0 +1,49 @@
+body,
+html {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    line-height: 1;
+    font-size: 62.5%;
+    box-sizing: border-box;
+    color: $black;
+    font-family: "Open Sans", Arial, Helvetica, serif;
+}
+
+
+body {
+    font-size: 16px;
+    background-color: $white;
+    background-image: url('../img/bg-ocean.jpg');
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+ul,
+ol,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    @include wrapper();
+}

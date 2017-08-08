@@ -1,0 +1,8 @@
+{
+    "pages" : {
+        "Мои работы": "./pages/works.html",
+        "Блог" : "./pages/blog.html",
+        "Обо мне" : "./pages/about.html",
+        "Авторизация" : "./pages/auth.html"
+    }
+}
