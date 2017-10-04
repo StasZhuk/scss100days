@@ -70,15 +70,15 @@
         transition: all 1s ease-in-out;
     }
 
-    @for $i from 1 through 8 {
+    @for $i from 1 through 10 {
         $pos: $i - 1;
         .slice-#{$i} {
-            background-position: ($pos * -52.42) + px 0;
+            background-position: ($pos * -42) + px 0;
             opacity: 0;
             transform: translateY(-50px);
         }
     }
-    @for $i from 1 through 4 {
+    @for $i from 1 through 5 {
         .slice-#{$i * 2} {
             transform: translateY(50px);
         }
